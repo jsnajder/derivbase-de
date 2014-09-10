@@ -18,3 +18,9 @@ library
   build-depends:     base ==4.6.*,
                      derivbase ==0.1.*
   hs-source-dirs:    src
+
+executable test
+  Build-Depends:  base ==4.6.*, derivbase ==0.1.*, derivbase-de
+  Main-Is:        test.hs
+  Hs-Source-Dirs: src
+

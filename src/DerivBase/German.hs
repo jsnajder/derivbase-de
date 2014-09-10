@@ -10,8 +10,9 @@
 -------------------------------------------------------------------------------}
 
 module DerivBase.German 
-  ( Pos
+  ( Pos (..)
   , LemmaPos
+  , removeGender
   , DerivSets
   , DerivPairs ) where
 
@@ -22,6 +23,15 @@ import qualified DerivBase.DerivPairs as DP (DerivPairs)
 data Pos = Nm | Nf | Nn | N | A | V deriving (Show, Read, Eq, Ord, Enum)
 
 type LemmaPos = LP Pos
+
+noGender :: Pos -> Pos
+noGender Nm = N
+noGender Nf = N
+noGender Nn = N
+noGender p  = p
+
+removeGender :: LemmaPos -> LemmaPos
+removeGender (LP l p) = LP l (noGender p)
 
 type DerivSets  = DS.DerivSets LemmaPos
 type DerivPairs = DP.DerivPairs LemmaPos
