@@ -2,7 +2,7 @@
 
  DerivBase.German
 
- German implementation of DErivBase, a derivational morphology database
+ Implementation of DerivBase for German
 
  (c) 2014 Britta Zeller <zeller@cl.uni-heidelberg.de>
           Jan Snajder <jan.snajder@fer.hr>
