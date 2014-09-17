@@ -1,4 +1,4 @@
-import DerivBase
+
 import qualified DerivBase.DerivPairs as DP
 import qualified DerivBase.DerivSets as DS
 import DerivBase.German
@@ -9,10 +9,10 @@ dbPairs = "/home/jan/dismods/derivbase/deriv-families/data/DErivBase-v1.3-pairs1
 main :: IO ()
 main = do
   ds <- DS.fromFile dbSets :: IO DerivSets
-  print $ DS.derivSet ds (LP "Wasser" Nn)
+  print $ DS.derivSet ds (readLemma "Wasser_Nn")
   dp <- DP.fromFile dbPairs :: IO DerivPairs
-  print $ DP.derivSet dp (LP "Wasser" Nn)
-  print $ DP.derivLinks dp (LP "Wasser" Nn)
+  print $ DP.derivSet dp (readLemma "Wasser_Nn")
+  print $ DP.derivLinks dp (readLemma "Wasser_Nn")
   
 
 

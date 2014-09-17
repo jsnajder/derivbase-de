@@ -10,19 +10,21 @@
 -------------------------------------------------------------------------------}
 
 module DerivBase.German 
-  ( Pos (..)
+  ( module DerivBase
+  , DerivSets
+  , DerivPairs
   , LemmaPos
   , removeGender
-  , DerivSets
-  , DerivPairs ) where
+  , Pos (..) ) where
 
+import Control.Applicative
 import DerivBase
 import qualified DerivBase.DerivSets as DS (DerivSets)
 import qualified DerivBase.DerivPairs as DP (DerivPairs)
 
 data Pos = Nm | Nf | Nn | N | A | V deriving (Show, Read, Eq, Ord, Enum)
 
-type LemmaPos = LP Pos
+type LemmaPos = LPO Pos
 
 noGender :: Pos -> Pos
 noGender Nm = N
@@ -31,7 +33,7 @@ noGender Nn = N
 noGender p  = p
 
 removeGender :: LemmaPos -> LemmaPos
-removeGender (LP l p) = LP l (noGender p)
+removeGender (LPO l p) = LPO l (noGender <$> p)
 
 type DerivSets  = DS.DerivSets LemmaPos
 type DerivPairs = DP.DerivPairs LemmaPos
